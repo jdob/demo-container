@@ -1,7 +1,7 @@
 FROM opensuse/leap:15.6
 
 RUN zypper refresh && \
-    zypper -n install golang-go && \
+    zypper in go -y && \
     zypper clean
 
 WORKDIR /app
