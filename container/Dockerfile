@@ -1,8 +1,9 @@
 FROM opensuse/leap:15.6
 
-RUN zypper refresh && \
-    zypper in go -y && \
-    zypper clean
+
+RUN zypper --non-interactive refresh && \
+    zypper --non-interactive install go && \
+    zypper --non-interactive clean
 
 WORKDIR /app
 
