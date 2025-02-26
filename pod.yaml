@@ -15,15 +15,11 @@ apiVersion: v1
 kind: Service
 metadata:
   name: suse-server
-  labels:
-    app: suse-server
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
-    - port: 80
-      targetPort: 9977
-      nodePort: 30080
+    - port: 8989  # External port
+      targetPort: 9977  # Container port
       protocol: TCP
-      name: http
   selector:
     app: suse-server
