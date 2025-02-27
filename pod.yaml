@@ -1,15 +1,24 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: suse-server
   labels:
     app: suse-server
 spec:
-  containers:
-  - name: suse-server
-    image: jdob/susecon-demo:latest
-    ports:
-    - containerPort: 9977
+  replicas: 1
+  selector:
+    matchLabels:
+      app: suse-server
+  template:
+    metadata:
+      labels:
+        app: suse-server
+    spec:
+      containers:
+      - name: suse-server
+        image: jdob/susecon-demo:latest
+        ports:
+        - containerPort: 9977
 ---
 apiVersion: v1
 kind: Service
